@@ -16,7 +16,7 @@ class Tareas {
         this._listado = {};
     }
 
-    crarTarea( desc='' ){
+    crearTarea( desc='' ){
         const tarea = new Tarea(desc);
         this._listado[tarea.id] = tarea;
     }

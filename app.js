@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const { guardarDB } = require('./db/guardarArchivo');
 require('colors');
 const { 
     inquirerMenu, 
@@ -17,16 +18,15 @@ const main = async() => {
             case '1':
                 // Crear Opcion
                 const desc = await leerInput('Descripción: ');
-                tareas.crarTarea( desc );
+                tareas.crearTarea( desc );
             break;
 
             case '2':
                 console.log( tareas.listadoArr );
             break;
-            
-            
         }
-
+        guardarDB( tareas.listadoArr );
+        
         await pausa();
 
     } while(opt !== '0' );
