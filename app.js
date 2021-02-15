@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const { guardarDB } = require('./db/guardarArchivo');
+const { guardarDB, leerDB } = require('./db/guardarArchivo');
 require('colors');
 const { 
     inquirerMenu, 
@@ -11,6 +11,15 @@ const main = async() => {
     let opt = ''
 
     const tareas = new Tareas();
+
+    const tareasDB = leerDB();
+
+    if ( tareasDB ) {
+        // Establecer Tareas
+    }
+
+    await pausa();
+
     do{
         // Imprmir el menú
         opt = await inquirerMenu();
@@ -25,7 +34,7 @@ const main = async() => {
                 console.log( tareas.listadoArr );
             break;
         }
-        guardarDB( tareas.listadoArr );
+        // guardarDB( tareas.listadoArr );
         
         await pausa();
 
